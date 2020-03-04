@@ -8,21 +8,25 @@ const io = require("socket.io")(http);
 io.on("connection", socket => {
   console.log("a user connected");
   socket.on("new-operations", data => {
-    io.emit("new-remote-operations", data);
+    io.emit(`new-remote-operations-${data.groupId}`, data);
   });
 });
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:3000"
+  })
+);
 
 app
   .route("/docs")
   .get(db.getDocs)
   .post(db.addDoc);
 app
-  .route("/docs/:id")
-  .get(db.getDocBySlug)
+  .route("/docs/:slug")
+  .get(db.getOrAddBySlug)
   .put(db.updateDoc);
 
 http.listen(4000, () => {
