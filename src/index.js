@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
   cors({
     allRoutes: true,
-    origin: process.env.FRONTEND,
+    origin: "https://shared-docs-f3513.firebaseapp.com",
     methods: "GET, PUT, UPDATE"
   })
 );
