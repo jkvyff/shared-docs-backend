@@ -16,7 +16,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: `${process.env.FRONTEND}`
+    allRoutes: true,
+    origin: `${process.env.FRONTEND}`,
+    methods: "GET, POST, PUT"
   })
 );
 
