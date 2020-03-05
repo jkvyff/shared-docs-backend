@@ -4,7 +4,6 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const db = require("./queries");
 const io = require("socket.io")(http);
-const origin = `${process.env.FRONTEND}`;
 
 io.on("connection", socket => {
   console.log("a user connected");
@@ -18,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
   cors({
     allRoutes: true,
-    origin: origin,
+    origin: process.env.FRONTEND,
     methods: "GET, PUT, UPDATE"
   })
 );
