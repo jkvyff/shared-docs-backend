@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: "https://www.vyff.com/"
+    origin: "https://www.vyff.com"
   })
 );
 
