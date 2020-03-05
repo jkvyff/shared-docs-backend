@@ -17,8 +17,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
   cors({
     allRoutes: true,
-    origin: "*",
-    methods: "GET, POST, PUT"
+    origin: `${process.env.FRONTEND}`,
+    methods: "GET, PUT, UPDATE"
   })
 );
 
